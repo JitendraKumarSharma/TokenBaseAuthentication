@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TestingDB.dbo.CountryMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CountryMaster">
+    <Key>
+      <PropertyRef Name="CountryId" />
+      <PropertyRef Name="CountryName" />
+      <PropertyRef Name="ShortName" />
+      <PropertyRef Name="Active" />
+    </Key>
+    <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="varchar" MaxLength="400" Nullable="false" />
+    <Property Name="ShortName" Type="varchar" MaxLength="400" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrencyMaster">
+    <Key>
+      <PropertyRef Name="CurrencyId" />
+    </Key>
+    <Property Name="CurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrencyName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CurrencySymbol" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CurrencyCode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Age" Type="int" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="ZipCode" Type="varchar" MaxLength="10" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="Gender" Type="varchar" MaxLength="10" />
+    <Property Name="IsMarried" Type="bit" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="EmpImage" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileName" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="FileSize" Type="int" Nullable="false" />
+    <Property Name="ImagePath" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ThumbPath" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="SectionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="ProductSales">
+    <Key>
+      <PropertyRef Name="SalesID" />
+    </Key>
+    <Property Name="SalesID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="SalesPerson" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="Records">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+    <Property Name="Location" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TestingDB.dbo.StateMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="StateMaster">
+    <Key>
+      <PropertyRef Name="StateID" />
+      <PropertyRef Name="CountryID" />
+      <PropertyRef Name="StateName" />
+      <PropertyRef Name="StateShortName" />
+    </Key>
+    <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+    <Property Name="StateName" Type="varchar" MaxLength="400" Nullable="false" />
+    <Property Name="StateShortName" Type="varchar" MaxLength="400" Nullable="false" />
+  </EntityType>
+  <EntityType Name="studentdetail">
+    <Key>
+      <PropertyRef Name="studentid" />
+    </Key>
+    <Property Name="schoolname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="studentid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="age" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TestingDB.dbo.temp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="temp">
+    <Key>
+      <PropertyRef Name="schoolname" />
+      <PropertyRef Name="studentid" />
+      <PropertyRef Name="age" />
+    </Key>
+    <Property Name="schoolname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="studentid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="age" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="time_zones">
+    <Key>
+      <PropertyRef Name="time_zone_id" />
+    </Key>
+    <Property Name="time_zone_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="time_zone" Type="varchar" MaxLength="400" Nullable="false" />
+    <Property Name="zone_id" Type="varchar" MaxLength="400" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_productSales_pid">
+    <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+    <End Role="ProductSales" Type="Self.ProductSales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductSales">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TestingDBModelStoreContainer">
+    <EntitySet Name="CurrencyMaster" EntityType="Self.CurrencyMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Files" EntityType="Self.Files" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductSales" EntityType="Self.ProductSales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Records" EntityType="Self.Records" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="studentdetail" EntityType="Self.studentdetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="time_zones" EntityType="Self.time_zones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CountryMaster" EntityType="Self.CountryMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CountryMaster].[CountryId] AS [CountryId], 
+    [CountryMaster].[CountryName] AS [CountryName], 
+    [CountryMaster].[ShortName] AS [ShortName], 
+    [CountryMaster].[Active] AS [Active]
+    FROM [dbo].[CountryMaster] AS [CountryMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StateMaster" EntityType="Self.StateMaster" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StateMaster].[StateID] AS [StateID], 
+    [StateMaster].[CountryID] AS [CountryID], 
+    [StateMaster].[StateName] AS [StateName], 
+    [StateMaster].[StateShortName] AS [StateShortName]
+    FROM [dbo].[StateMaster] AS [StateMaster]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="temp" EntityType="Self.temp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [temp].[schoolname] AS [schoolname], 
+    [temp].[studentid] AS [studentid], 
+    [temp].[age] AS [age]
+    FROM [dbo].[temp] AS [temp]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="fk_productSales_pid" Association="Self.fk_productSales_pid">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="ProductSales" EntitySet="ProductSales" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
